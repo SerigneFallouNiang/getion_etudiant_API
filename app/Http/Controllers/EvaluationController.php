@@ -51,6 +51,9 @@ class EvaluationController extends Controller
      */
     public function destroy(Evaluation $evaluation)
     {
-        //
+        $evaluation->delete();
+
+        return response()->json(['message'=>'evaliation deleted successfully']);  
+
     }
 }
