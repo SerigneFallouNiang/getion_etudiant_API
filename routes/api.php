@@ -11,7 +11,5 @@ Route::get('/user', function (Request $request) {
 
 // Route CRUD ETUDIANT
 Route::apiResource('etudiants',EtudiantController::class)->only('index', 'show','store', 'destroy');
-
 Route::post('etudiants/{etudiant}', [EtudiantController::class, 'update']);
 
-// Route::delete('etudiants/{id}/force-delete',[EtudiantController::class,'forceDelete']);
