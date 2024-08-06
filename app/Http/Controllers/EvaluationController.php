@@ -36,20 +36,14 @@ class EvaluationController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Evaluation $evaluation)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
      */
     public function update(UpdateEvaluationRequest $request, Evaluation $evaluation)
     {
-        //
+        $evaluation->update($request->all());
+        return $evaluation;
     }
 
     /**

@@ -15,4 +15,4 @@ Route::apiResource('etudiants',EtudiantController::class)->only('index', 'show',
 Route::post('etudiants/{etudiant}', [EtudiantController::class, 'update']);
 
 //Routes CRUD EVALUATION
-Route::apiResource('evaluations',EvaluationController::class)->only('index', 'show','store', 'destroy');
+Route::apiResource('evaluations',EvaluationController::class);
