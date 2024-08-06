@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Etudiant;
+use Illuminate\Support\Facades\File;
 use App\Http\Requests\StoreEtudiantRequest;
 use App\Http\Controllers\EtudiantController;
 use App\Http\Requests\UpdateEtudiantRequest;
@@ -43,23 +44,31 @@ class EtudiantController extends Controller
      */
     public function show(Etudiant $etudiant)
     {
-        //
+        return $this->customJsonResponse("Livre récupéré avec succès", $etudiant);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Etudiant $etudiant)
-    {
-        //
-    }
+    
 
     /**
      * Update the specified resource in storage.
      */
     public function update(UpdateEtudiantRequest $request, Etudiant $etudiant)
     {
-        //
+        $etudiant->fill($request->validated());
+
+        if ($request->hasFile('photo')) {
+
+        if(File::exists(public_path("storage/" . $etudiant->photo))){
+            File::delete(public_path($etudiant->photo));
+        }
+
+        $photo = $request->file('photo');
+        $etudiant->photo = $photo->store('etudiants', 'public');
+    }
+
+        $etudiant->update();
+
+        return $etudiant;
     }
 
     /**
@@ -67,6 +76,7 @@ class EtudiantController extends Controller
      */
     public function destroy(Etudiant $etudiant)
     {
-        //
+        $etudiant->delete();
+        return $etudiant;
     }
 }

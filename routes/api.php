@@ -8,4 +8,10 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-Route::apiResource('etudiants',EtudiantController::class);
+
+// Route CRUD ETUDIANT
+Route::apiResource('etudiants',EtudiantController::class)->only('index', 'show','store', 'destroy');
+
+Route::post('etudiants/{etudiant}', [EtudiantController::class, 'update']);
+
+// Route::delete('etudiants/{id}/force-delete',[EtudiantController::class,'forceDelete']);
