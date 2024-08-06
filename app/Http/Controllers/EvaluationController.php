@@ -13,23 +13,19 @@ class EvaluationController extends Controller
      */
     public function index()
     {
-        //
+        $evaluation = Evaluation::all();
+
+        return $evaluation;
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
+    
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(StoreEvaluationRequest $request)
     {
-        //
+        return Evaluation::create($request->all());
     }
 
     /**
@@ -40,20 +36,14 @@ class EvaluationController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Evaluation $evaluation)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
      */
     public function update(UpdateEvaluationRequest $request, Evaluation $evaluation)
     {
-        //
+        $evaluation->update($request->all());
+        return $evaluation;
     }
 
     /**
@@ -61,6 +51,9 @@ class EvaluationController extends Controller
      */
     public function destroy(Evaluation $evaluation)
     {
-        //
+        $evaluation->delete();
+
+        return response()->json(['message'=>'evaliation deleted successfully']);  
+
     }
 }
