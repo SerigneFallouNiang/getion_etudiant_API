@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(Etudiant::class)->onDelete('cascade');
             $table->foreignIdFor(Matiere::class)->onDelete('cascade');
-            $table->date('date');
+            $table->date('date')->nullable();
             $table->integer('valeur');
             $table->timestamps();
         });

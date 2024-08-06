@@ -13,23 +13,19 @@ class EvaluationController extends Controller
      */
     public function index()
     {
-        //
+        $evaluation = Evaluation::all();
+
+        return $evaluation;
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
+    
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(StoreEvaluationRequest $request)
     {
-        //
+        return Evaluation::create($request->all());
     }
 
     /**
