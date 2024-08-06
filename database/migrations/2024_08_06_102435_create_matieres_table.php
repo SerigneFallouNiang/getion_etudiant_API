@@ -1,8 +1,13 @@
+
+
+
+
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use App\Models\UE;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration
 {
@@ -13,7 +18,7 @@ return new class extends Migration
     {
         Schema::create('matieres', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Matiere::class)->constrained()->onDelete('cascade');
+            $table->foreignIdFor(UE::class)->constrained('u_e_s')->onDelete('cascade');
             $table->string('libelle');
             $table->string('date_debut');
             $table->string('date_fin');

@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreEtudiantRequest;
-use App\Http\Requests\UpdateEtudiantRequest;
 use App\Models\Etudiant;
+use App\Http\Requests\StoreEtudiantRequest;
+use App\Http\Controllers\EtudiantController;
+use App\Http\Requests\UpdateEtudiantRequest;
 
 class EtudiantController extends Controller
 {
@@ -13,16 +14,12 @@ class EtudiantController extends Controller
      */
     public function index()
     {
-        //
+        $etudiants = Etudiant::all();
+        // return $this->customJsonResponse("Liste des etudiants", $etudiants);
+        return $etudiants;
+        
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.

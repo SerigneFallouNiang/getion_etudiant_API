@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\UE;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class UESeeder extends Seeder
 {
@@ -12,6 +13,6 @@ class UESeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        UE::factory(7)->create();
     }
 }

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->integer('telephone')->unique();
             $table->string('matricule')->unique();
             $table->string('email');
-            $table->string('mot_de_passe');
+            $table->string('date_de_naissace');
             $table->string('photo');
             $table->timestamps();
         });
