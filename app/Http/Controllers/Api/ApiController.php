@@ -35,10 +35,23 @@ class ApiController extends Controller
         ]);
      }
 
-
+     //DECONNEXION
      public function logout()
      {
         auth()->logout();
         return response()->json(["message" => "Déconnexion réussie"]);
      }
+
+     // Refresh Token API - GET (JWT Auth Token)    
+     public function refreshToken(){
+        $token = auth()->refresh();
+        return response()->json([
+            "status" => true,
+            "message"=> "New access Token",
+            "token"=>$token,
+            "expires_in" => auth()->factory()->getTTL() * 60
+        ]);
+     }
+
 }
+// Refresh Token API - GET (JWT Auth Token)
