@@ -28,7 +28,7 @@ class UpdateEtudiantRequest extends FormRequest
             "telephone" => ["required", "string", "max:15", Rule::unique('etudiants')->ignore($etudiantId)],
             "email" => ["required", "string", "max:255"],
             "date_de_naissace" => ["required", "string", "max:10"],
-            "photo" => ["required", "image", "mimes:jpeg,png,jpg", "max:2048"]
+            // "photo" => ["required", "image", "mimes:jpeg,png,jpg", "max:2048"]
         ];
     }
 

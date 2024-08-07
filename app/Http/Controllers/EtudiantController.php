@@ -79,4 +79,33 @@ class EtudiantController extends Controller
         $etudiant->delete();
         return $etudiant;
     }
+    
+
+
+
+    public function trashed()
+{
+    $trashedEtudiants = Etudiant::onlyTrashed()->get();
+    return $trashedEtudiants;
+}
+
+public function restore($id)
+{
+    $etudiant = Etudiant::withTrashed()->find($id);
+    if ($etudiant) {
+        $etudiant->restore();
+        return $etudiant;
+    }
+    return response()->json(['message' => 'Étudiant non trouvé'], 404);
+}
+
+public function forceDelete($id)
+{
+    $etudiant = Etudiant::withTrashed()->find($id);
+    if ($etudiant) {
+        $etudiant->forceDelete();
+        return response()->json(['message' => 'Étudiant définitivement supprimé']);
+    }
+    return response()->json(['message' => 'Étudiant non trouvé'], 404);
+}
 }

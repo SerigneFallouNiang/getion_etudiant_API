@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('date_de_naissace');
             $table->string('photo');
             $table->timestamps();
+            $table->softDeletes(); // Ajoutez cette ligne
         });
     }
 
